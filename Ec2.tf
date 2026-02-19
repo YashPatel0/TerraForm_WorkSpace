@@ -14,10 +14,6 @@ resource "aws_instance" "my_ec2_instance" {
     # heredoc
     user_data = <<EOF
 #!/bin/bash
-set -e
-
-# Wait for network
-sleep 30
 
 # Update system
 apt-get update -y
