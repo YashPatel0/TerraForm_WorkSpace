@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "my_ec2_instance" {
-    ami = "ami-051a31ab2f4d498f5"
+    ami = "ami-019715e0d74f695be"
     instance_type = "t3.small"
     key_name = var.key_name
     vpc_security_group_ids = [var.sg_id,aws_security_group.my_sg.id]
