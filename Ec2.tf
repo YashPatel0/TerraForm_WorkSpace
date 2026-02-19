@@ -7,6 +7,10 @@ resource "aws_instance" "my_ec2_instance" {
     instance_type = "t3.small"
     key_name = var.key_name
     vpc_security_group_ids = [var.sg_id,aws_security_group.my_sg.id]
+    tags = {
+        Name = "my-terr-ec2-instance"
+        env = "dev"
+    }
     # heredoc
     user_data = <<EOF
     #!/bin/bash
