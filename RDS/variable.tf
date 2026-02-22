@@ -24,5 +24,5 @@ variable "username"{
 
 variable "password"{
     description = "password for RDS instance"
-    default = "Yash@1234"
+    default = "Yash1234"
 }
