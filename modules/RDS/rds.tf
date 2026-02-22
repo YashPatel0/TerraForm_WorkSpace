@@ -13,7 +13,7 @@ data "aws_subnets" "rds_subnet" {
 
 # create a security group for RDS instance
 resource "aws_security_group" "my_ssg" {
-    name = "new-sg"
+    name = "new-ssg"
     description = "new security group"
     vpc_id = data.aws_vpc.rds_vpc.id
 
