@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "RDS" {
-  source = "./modules/RDS"
+  source = "./RDS"
 
   allocated_storage = var.allocated_storage
   max_allocated_storage = var.max_allocated_storage
@@ -13,6 +13,6 @@ module "RDS" {
 }
 
 module "S3" {
-  source = "./modules/S3"
+  source = "./S3"
   bucket = var.bucket
 }
