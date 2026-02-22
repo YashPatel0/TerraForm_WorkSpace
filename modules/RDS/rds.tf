@@ -35,11 +35,11 @@ resource "aws_security_group" "my_sg" {
 }
 
 # Subnet group for RDS
-resource "aws_db_subnet_group" "rds_subne_group_my" {
-  name = "db-subnet-group"
+resource "aws_db_subnet_group" "rds_subnet_group_my" {
+  name = "db-subnet-group_module"
   subnet_ids = data.aws_subnets.rds_subnet.ids
   tags = {
-    Name = "db-subnet-group"
+    Name = "db-subnet-group_module"
   }
 }
 
@@ -56,5 +56,5 @@ resource "aws_db_instance" "yash_rds_instance" {
     skip_final_snapshot = false
     publicly_accessible = true
     vpc_security_group_ids = [aws_security_group.my_sg.id]
-    db_subnet_group_name = aws_db_subnet_group.rds_subne_group_my.name
+    db_subnet_group_name = aws_db_subnet_group.rds_subnet_group_my.name
 }
