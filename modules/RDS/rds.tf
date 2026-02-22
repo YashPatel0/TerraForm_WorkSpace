@@ -54,6 +54,7 @@ resource "aws_db_instance" "yash_rds_instance" {
     username = var.username
     password = var.password
     skip_final_snapshot = false
+    final_snapshot_identifier = false
     publicly_accessible = true
     vpc_security_group_ids = [aws_security_group.my_ssg.id]
     db_subnet_group_name = aws_db_subnet_group.rds_subnet_group_my.name
