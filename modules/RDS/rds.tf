@@ -12,7 +12,7 @@ data "aws_subnets" "rds_subnet" {
 }
 
 # create a security group for RDS instance
-resource "aws_security_group" "my_sg" {
+resource "aws_security_group" "my_ssg" {
     name = "new-sg"
     description = "new security group"
     vpc_id = data.aws_vpc.rds_vpc.id
@@ -55,6 +55,6 @@ resource "aws_db_instance" "yash_rds_instance" {
     password = var.password
     skip_final_snapshot = false
     publicly_accessible = true
-    vpc_security_group_ids = [aws_security_group.my_sg.id]
+    vpc_security_group_ids = [aws_security_group.my_ssg.id]
     db_subnet_group_name = aws_db_subnet_group.rds_subnet_group_my.name
 }
