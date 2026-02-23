@@ -3,19 +3,19 @@ provider "aws" {
 }
 
 resource "aws_iam_role" "demo_role" {
-    name = "demo_role"
-    assume_role_policy = jsondecode({
-        version = "2012-10-17"
-        statement = [
-            {
-                effect = "Allow"
-                principal = {
-                    service = "ec2.amazonaws.com"
-                    }
-                sid = ""
-                action = "sts:AssumeRole"
-            }
-        ]
-    })
-}
+  name = "demo-ec2-role"
 
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid    = ""
+        Effect = "Allow"
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+}
