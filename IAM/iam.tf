@@ -12,6 +12,7 @@ resource "aws_iam_role" "demo_role" {
                 principal = {
                     service = "ec2.amazonaws.com"
                     }
+                sid = ""
                 action = "sts:AssumeRole"
             }
         ]
