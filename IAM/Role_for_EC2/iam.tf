@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "ap-south-1"
-}
-
 resource "aws_iam_role" "s3_role" {
   name = "demo-s3-role"
 
