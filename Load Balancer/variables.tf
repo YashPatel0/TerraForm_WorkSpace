@@ -9,7 +9,7 @@ variable "project" {
   default     = "cbz"
 }
 variable "key_name" {
-  default     = "new-key"
+  default     = "aws_keypair"
 }
 variable "env" {
   default     = "dev"
