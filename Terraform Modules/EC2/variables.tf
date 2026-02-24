@@ -13,7 +13,6 @@ variable "tagname" {
 }
 variable "security_group_id" {
 
-}
 variable "subnet_id" {}
 
 variable "associate_public_ip" {}
