@@ -12,7 +12,7 @@ resource "aws_launch_template" "home_launch_template"{
         env = var.env
     }
     vpc_security_group_ids = [aws_security_group.security_group.id]
-    user_data = base64encode(<<EOF
+    user_data = base64encode(<<-EOF
     #!/bin/bash
 
     # Update system
