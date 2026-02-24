@@ -14,20 +14,11 @@ resource "aws_launch_template" "home_launch_template"{
     vpc_security_group_ids = [aws_security_group.security_group.id]
     user_data = base64encode(<<-EOF
     #!/bin/bash
-
-    # Update system
-    apt-get update -y
-
-    # Install Apache
-    apt-get install -y apache2
-
-    # Create simple test page
-    echo "<h1>Home Page</h1>" > /var/www/html/index.html
-
-    # Enable and start Apache
+    apt update -y
+    apt install apache2 -y
     systemctl enable apache2
     systemctl start apache2
-
+    echo "<h1> HELLO WORLD </h1>" > /var/www/html/index.html
     EOF
     )
 }
@@ -44,24 +35,13 @@ resource "aws_launch_template" "laptop_launch_template"{
     }
     vpc_security_group_ids = [aws_security_group.security_group.id]
     user_data = base64encode(<<-EOF
-
     #!/bin/bash
-
-    # Update system
-    apt-get update -y
-
-    # Install Apache
-    apt-get install -y apache2
-
-    mkdir /var/www/html/laptop
-
-    # Create simple test page
-    echo "<h1>Laptop Page</h1>" > /var/www/html/laptop/index.html
-
-    # Enable and start Apache
+    apt update -y
+    apt install apache2 -y
     systemctl enable apache2
     systemctl start apache2
-
+    mkdir /var/www/html/laptop
+    echo "<h1> SALE SALE SALE in Laptop </h1>" > /var/www/html/laptop/index.html
     EOF
     )
 }
@@ -77,22 +57,12 @@ resource "aws_launch_template" "mobile_launch_template"{
     vpc_security_group_ids = [aws_security_group.security_group.id]
     user_data = base64encode(<<-EOF
     #!/bin/bash
-
-    # Update system
-    apt-get update -y
-
-    # Install Apache
-    apt-get install -y apache2
-
-    mkdir /var/www/html/mobile
-
-    # Create simple test page
-    echo "<h1>Mobile Page</h1>" > /var/www/html/mobile/index.html
-
-    # Enable and start Apache
+    apt update -y
+    apt install apache2 -y
     systemctl enable apache2
-    systemctl start apache2
-
+    systemctl start apache2 
+    mkdir /var/www/html/mobile
+    echo "<h1> This is mobile page </h1>" > /var/www/html/mobile/index.html
     EOF
     )
 }
