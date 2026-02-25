@@ -1,4 +1,4 @@
-resource "aws_db_subnet_group" "this" {
+resource "aws_db_subnet_group" "rds_subnet_group" {
   name       = "${var.project_name}-db-subnet-group"
   subnet_ids = var.subnet_ids
 
@@ -19,7 +19,7 @@ resource "aws_db_instance" "this" {
   username                = var.username
   password                = var.password
 
-  db_subnet_group_name    = aws_db_subnet_group.this.name
+  db_subnet_group_name    = aws_db_subnet_group.rds_subnet_group.name
   vpc_security_group_ids  = [var.security_group_id]
 
   publicly_accessible     = false
