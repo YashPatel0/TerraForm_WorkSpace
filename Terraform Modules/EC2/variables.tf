@@ -1,16 +1,11 @@
-variable "ami_id" {
-  default = "ami-019715e0d74f695be"
-}
+variable "ami_id" {}
 
-variable "instance_type" {
-  default = "t2.micro"
-}
-variable "key_name" {
-  default = "aws_keypair"
-}
-variable "tagname" {
-  default = "my_project"
-}
+variable "instance_type" {}
+
+variable "key_name" {}
+
+variable "tagname" {}
+
 variable "security_group_id" {}
 
 variable "associate_public_ip" {}
