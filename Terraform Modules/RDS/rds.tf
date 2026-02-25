@@ -8,7 +8,7 @@ resource "aws_db_subnet_group" "rds_subnet_group" {
   }
 }
 
-resource "aws_db_instance" "this" {
+resource "aws_db_instance" "rds_instance" {
   identifier              = "${var.project_name}-rds"
   engine                  = var.engine
   engine_version          = var.engine_version
