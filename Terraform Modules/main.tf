@@ -35,3 +35,18 @@ module "VPC" {
   # allowed_ssh_cidr = 0.0.0.0/0
 }
 
+module "RDS" {
+  source = "./RDS"
+
+  project_name = var.project_name
+  env = var.env
+  subnet_ids = [module.VPC.public_subnet_id, module.VPC.private_subnet_id]
+  security_group_id = module.VPC.security_group_id
+  engine = var.engine
+  engine_version = var.engine_version
+  instance_class = var.instance_class
+  allocated_storage = var.allocated_storage
+  db_name = var.db_name
+  username = var.username
+  password = var.password
+}
