@@ -57,7 +57,7 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_role_attachment" {
 
 # Eks cluster  
 resource "aws_eks_cluster" "my_cluster" {
-    name     = "my-eks-cluster"
+    name     = "my-eks-cluster-new"
     version = "1.35"
 
     access_config {
@@ -81,7 +81,7 @@ resource "aws_eks_cluster" "my_cluster" {
 
 # iam role for nodes
 resource "aws_iam_role" "eks_node_role" {
-    name = "eks-node-role"
+    name = "eks-node-role-new"
 
     assume_role_policy = jsonencode({
         Version = "2012-10-17"
