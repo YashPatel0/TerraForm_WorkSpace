@@ -3,7 +3,7 @@ resource "aws_vpc" "my_vpc" {
     cidr_block = var.vpc_cidr
 
     tags = {
-      name = "my-vpc"
+      name = "my-vpc_1"
     }
 }
 
@@ -14,7 +14,7 @@ resource "aws_subnet" "private_subnet_1" {
     cidr_block = var.private_subnet_1_cidr
     availability_zone = var.availability_zone_1
     tags = {
-        name = "private-subnet-1"
+        name = "private-subnet-2"
     }
 }
 
@@ -23,14 +23,14 @@ resource "aws_subnet" "private_subnet_2" {
     cidr_block = var.private_subnet_2_cidr
     availability_zone = var.availability_zone_2
     tags = {
-        name = "private-subnet-2"
+        name = "private-subnet-3"
     }
 }
 
 
 # iam role for eks cluster
 resource "aws_iam_role" "eks_cluster_role" {
-    name = "eks-cluster-role-new"
+    name = "eks-cluster-role-new1"
 
     assume_role_policy = jsonencode({
         Version = "2012-10-17"
@@ -56,7 +56,7 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_role_attachment" {
 
 # Eks cluster  
 resource "aws_eks_cluster" "my_cluster" {
-    name     = "my-eks-cluster"
+    name     = "my-eks-cluster-new"
     version = "1.35"
 
 
@@ -77,7 +77,7 @@ resource "aws_eks_cluster" "my_cluster" {
 
 # iam role for nodes
 resource "aws_iam_role" "eks_node_role" {
-    name = "eks-node-role-new"
+    name = "eks-node-role-new1"
 
     assume_role_policy = jsonencode({
         Version = "2012-10-17"
@@ -110,7 +110,7 @@ resource "aws_iam_role_policy_attachment" "eks_node_role_attachment_3" {
 # Node group
 resource "aws_eks_node_group" "my_node_group" {
     cluster_name = aws_eks_cluster.my_cluster.name
-    node_group_name = "my-node-group"
+    node_group_name = "my-node-group-new1"
     node_role_arn = aws_iam_role.eks_node_role.arn
     subnet_ids = [
         aws_subnet.private_subnet_1.id,
