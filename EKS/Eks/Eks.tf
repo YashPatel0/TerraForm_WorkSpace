@@ -38,7 +38,6 @@ resource "aws_iam_role" "eks_cluster_role" {
             {
                 Action = "sts:AssumeRole"
                 Effect = "Allow"
-                sid = ""
                 Principal = {
                     Service = "eks.amazonaws.com"
                 }
@@ -89,7 +88,6 @@ resource "aws_iam_role" "eks_node_role" {
             {
                 Action = "sts:AssumeRole"
                 Effect = "Allow"
-                sid = ""
                 Principal = {
                     Service = "ec2.amazonaws.com"
                 }
