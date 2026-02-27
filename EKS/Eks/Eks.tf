@@ -30,7 +30,7 @@ resource "aws_subnet" "private_subnet_2" {
 
 # iam role for eks cluster
 resource "aws_iam_role" "eks_cluster_role" {
-    name = "eks-cluster-role"
+    name = "eks-cluster-role-new"
 
     assume_role_policy = jsonencode({
         Version = "2012-10-17"
@@ -56,7 +56,7 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_role_attachment" {
 
 # Eks cluster  
 resource "aws_eks_cluster" "my_cluster" {
-    name     = "my-eks-cluster-new"
+    name     = "my-eks-cluster"
     version = "1.35"
 
     access_config {
