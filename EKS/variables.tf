@@ -18,8 +18,8 @@ variable "availability_zone_2" {
     default = "ap-south-1b"
 }
 
-variable "instance_type" {
-    default = "t3.small"
+variable "instance_types" {
+    default = ["t3.small"]
 }
 
 variable "desired_size" {

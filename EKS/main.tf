@@ -12,7 +12,7 @@ module "eks" {
     private_subnet_2_cidr = var.private_subnet_2_cidr
     availability_zone_2 = var.availability_zone_2
     #eks cluster
-    instance_type = var.instance_type
+    instance_type = var.instance_types
     desired_size = var.desired_size
     max_size = var.max_size
     min_size = var.min_size
