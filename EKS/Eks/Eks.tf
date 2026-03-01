@@ -48,11 +48,14 @@ resource "aws_iam_role" "eks_cluster_role" {
 
 
 # Attach the AmazonEKSClusterPolicy to the IAM role
-resource "aws_iam_role_policy_attachment" "eks_cluster_role_attachment" {
+resource "aws_iam_role_policy_attachment" "eks_cluster_role_attachment1" {
     policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
     role       = aws_iam_role.eks_cluster_role.name
 }
-
+resource "aws_iam_role_policy_attachment" "eks_cluster_role_attachment2" {
+  role       = aws_iam_role.eks_cluster_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
+}
 
 # Eks cluster  
 resource "aws_eks_cluster" "my_cluster" {
@@ -68,7 +71,10 @@ resource "aws_eks_cluster" "my_cluster" {
         aws_subnet.private_subnet_2.id
     ]
   }
-  depends_on = [aws_iam_role_policy_attachment.eks_cluster_role_attachment]
+  depends_on = [
+    aws_iam_role_policy_attachment.eks_cluster_role_attachment1,
+    aws_iam_role_policy_attachment.eks_cluster_role_attachment2
+  ]
   
   timeouts {
     create = "20m"
@@ -110,7 +116,7 @@ resource "aws_iam_role_policy_attachment" "eks_node_role_attachment_3" {
 # Node group
 resource "aws_eks_node_group" "my_node_group" {
     cluster_name = aws_eks_cluster.my_cluster.name
-    node_group_name = "my-node-group"
+    node_group_name = "my-node-group-new1"
     node_role_arn = aws_iam_role.eks_node_role.arn
     subnet_ids = [
         aws_subnet.private_subnet_1.id,
