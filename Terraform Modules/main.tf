@@ -50,3 +50,17 @@ module "RDS" {
   username = var.username
   password = var.password
 }
+
+module "EKS" {
+  source = "./Eks"
+
+  vpc_cidr = var.vpc_cidr
+  private_subnet_1_cidr = var.private_subnet_1_cidr
+  availability_zone_1 = var.availability_zone_1
+  private_subnet_2_cidr = var.private_subnet_2_cidr
+  availability_zone_2 = var.availability_zone_2
+  instance_type = var.instance_type
+  desired_size = var.desired_size
+  max_size = var.max_size
+  min_size = var.min_size
+}
