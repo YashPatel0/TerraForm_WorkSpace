@@ -7,7 +7,7 @@ aws_eks_cluster_name = "my-eks-cluster"
 desired_size =2
 max_size =3
 min_size = 1
-instance_types = ["t2.small"]
+instance_types = ["db.c7i-flex.large"]
 
 
 # RDS
@@ -21,4 +21,4 @@ password = "Admin1234"
 
 # S3
 
-bucket = "yash-buxx-123"
+bucket = "yash-abc-123"

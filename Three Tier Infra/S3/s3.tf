@@ -1,21 +1,16 @@
-resource "aws_s3_bucket" "static_site" {
-  bucket = "yash-static-website-unique-12345"
-}
+# create a bucker 
+resource "aws_s3_bucket" "pranav" {
+  bucket = var.bucket
 
-resource "aws_s3_bucket_website_configuration" "website" {
-  bucket = aws_s3_bucket.static_site.id
-
-  index_document {
-    suffix = "index.html"
-  }
-
-  error_document {
-    key = "error.html"
+  website {
+    index_document = "index.html"
+    error_document = "error.html"
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "public_access" {
-  bucket = aws_s3_bucket.static_site.id
+#  decible public access block
+resource "aws_s3_bucket_public_access_block" "example" {
+  bucket = aws_s3_bucket.pranav.bucket
 
   block_public_acls       = false
   block_public_policy     = false
@@ -23,9 +18,9 @@ resource "aws_s3_bucket_public_access_block" "public_access" {
   restrict_public_buckets = false
 }
 
-
+# give bucket policy (it is important for public access)
 resource "aws_s3_bucket_policy" "public_read" {
-  bucket = aws_s3_bucket.static_site.id
+  bucket = aws_s3_bucket.pranav.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -34,12 +29,12 @@ resource "aws_s3_bucket_policy" "public_read" {
         Effect    = "Allow"
         Principal = "*"
         Action    = "s3:GetObject"
-        Resource  = "${aws_s3_bucket.static_site.arn}/*"
+        Resource  = "${aws_s3_bucket.pranav.arn}/*"
       }
     ]
   })
 
-  depends_on = [aws_s3_bucket_public_access_block.public_access]
+  depends_on = [aws_s3_bucket_public_access_block.example]
 }
 
 
