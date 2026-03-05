@@ -6,7 +6,7 @@ provider "aws" {
 
 module "EKS" {
 #   Path to the EKS module
-  source = "./modules/EKS"
+  source = "./EKS"
 
   aws_eks_cluster_name = "my-eks-cluster"
 #   EKS Node Group scaling 
@@ -21,7 +21,7 @@ module "EKS" {
 
 
 module "RDS" {
-  source = "./modules/RDS"
+  source = "./RDS"
 
   allocated_storage = 10
   max_allocated_storage = 20
@@ -32,7 +32,7 @@ module "RDS" {
 
 
 module "s3" {
-  source = "./modules/S3"
+  source = "./S3"
 
   bucket = "yash-bucket-123"
 }
