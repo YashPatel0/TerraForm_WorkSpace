@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "ap-south-1"
+  region = var.region
 }
 
 
@@ -8,14 +8,14 @@ module "EKS" {
 #   Path to the EKS module
   source = "./EKS"
 
-  aws_eks_cluster_name = "my-eks-cluster"
+  aws_eks_cluster_name = var.aws_eks_cluster_name
 #   EKS Node Group scaling 
-  desired_size = 2
-  max_size = 3
-  min_size = 1
+  desired_size = var.desired_size
+  max_size = var.max_size
+  min_size = var.min_size
 
 #   EKS Node Group instance types
-  instance_types =  ["t2.small"]
+  instance_types = var.instance_types
  
 }
 
@@ -23,16 +23,16 @@ module "EKS" {
 module "RDS" {
   source = "./RDS"
 
-  allocated_storage = 10
-  max_allocated_storage = 20
-  instance_class = "db.t3.micro"
-  username = "admin"
-  password = "admin"
+  allocated_storage = var.allocated_storage
+  max_allocated_storage = var.max_allocated_storage
+  instance_class = var.instance_class
+  username = var.username
+  password = var.password
 }
 
 
 module "s3" {
   source = "./S3"
 
-  bucket = "yash-bucket-123"
+  bucket = var.bucket
 }
